@@ -36,8 +36,8 @@ def translate_hitting_set_to_vertex_cover(hitting_set_solution):
     return vertex_cover_solution
 
 def verify_vertex_cover_solution(vertex_cover_solution, graph, k):
-    if not vertex_cover_solution: return True
-    elif len(vertex_cover_solution) > k: return False
+    if not vertex_cover_solution: return False
+    if len(vertex_cover_solution) > k: return False
     else:
         for vertex in graph:
             check = False
@@ -51,7 +51,7 @@ def verify_vertex_cover_solution(vertex_cover_solution, graph, k):
 def main():
 
     G = [['1','2'],['2', '3'],['3', '4']]
-    k = 1
+    k = 2
 
     S = vertex_cover_to_hitting_set(G, k)
 
@@ -60,9 +60,9 @@ def main():
     vertex_cover_solution = translate_hitting_set_to_vertex_cover(hitting_set_solution)
 
     valid = verify_vertex_cover_solution(vertex_cover_solution, G, k)
-    print("Solução de HITTING SET:", hitting_set_solution)
-    print("Solução traduzida de VERTEX COVER:", vertex_cover_solution)
-    print("A solução traduzida é válida?", valid)
+    print("Solução de hitting set:", hitting_set_solution)
+    print("Solução traduzida de vertex cover:", vertex_cover_solution)
+    print("A solução é válida?", valid)
 
 if __name__ == "__main__":
     main()
